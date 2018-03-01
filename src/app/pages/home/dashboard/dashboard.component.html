@@ -2,9 +2,26 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <mat-card>
+      <mat-card *ngIf="auth.user$ | async as user">
         Dashboard!
-        <h4 *ngIf="auth.user$ | async as user">Welkom {{ user.displayName }}!</h4>
+        <h4>Welkom {{ user.displayName }}!</h4>
+
+
+        <hr>
+        TESTINGZZZZZZ<br>
+        <input #content>
+        <select #style>
+          <option value="info">info</option>
+          <option value="danger">danger</option>
+          <option value="success">success</option>
+          <option value="warning">warning</option>
+          <option value="primary">primary</option>
+          <option value="secondary">secondary</option>
+          <option value="light">light</option>
+          <option value="dark">dark</option>
+        </select>
+        <button (click)="toast.saveUserMessage(user, style.value, content.value)">add Database message</button>
+        <button (click)="toast.saveLocalMessage(style.value, content.value)">add Session message</button>
       </mat-card>
     </div>
   </div>

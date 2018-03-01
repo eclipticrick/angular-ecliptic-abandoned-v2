@@ -1,17 +1,17 @@
 import { Route } from '@angular/router';
-import { AuthGuard } from "./guards/auth.guard";
-import { PageNotFoundComponent } from "./pages/page-not-found/page-not-found.component";
-import { HomeComponent } from "./pages/home/home.component";
-import { LoginComponent } from "./pages/login/login.component";
-import { ProfileComponent } from "./pages/profile/profile.component";
-import { SecuritySettingsComponent } from "./pages/settings/security/security.component";
-import { SettingsComponent } from "./pages/settings/settings.component";
-import { InterestsSettingsComponent } from "./pages/settings/interests/interests.component";
-import { HomepageSettingsComponent } from "./pages/settings/homepage/homepage.component";
-import { NavigationSettingsComponent } from "./pages/settings/navigation/navigation.component";
-import { AnalyzeSettingsComponent } from "./pages/settings/analyze/analyze.component";
-import { PersonalizeSettingsComponent } from "./pages/settings/personalize/personalize.component";
-import { ProfileSettingsComponent } from "./pages/settings/profile/profile.component";
+import { AuthGuard } from "@guards/auth.guard";
+import { PageNotFoundComponent } from "@pages/page-not-found/page-not-found.component";
+import { HomeComponent } from "@pages/home/home.component";
+import { LoginComponent } from "@pages/login/login.component";
+import { ProfileComponent } from "@pages/profile/profile.component";
+import { SecuritySettingsComponent } from "@pages/settings/security/security.component";
+import { SettingsComponent } from "@pages/settings/settings.component";
+import { InterestsSettingsComponent } from "@pages/settings/interests/interests.component";
+import { HomepageSettingsComponent } from "@pages/settings/homepage/homepage.component";
+import { NavigationSettingsComponent } from "@pages/settings/navigation/navigation.component";
+import { AnalyzeSettingsComponent } from "@pages/settings/analyze/analyze.component";
+import { PersonalizeSettingsComponent } from "@pages/settings/personalize/personalize.component";
+import { ProfileSettingsComponent } from "@pages/settings/profile/profile.component";
 
 export const ROUTER_CONFIG: Route[] = [
   {

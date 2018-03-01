@@ -1,69 +1,73 @@
 // angular
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 
 // 3rd party
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AngularFireModule } from "angularfire2";
-import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFirestoreModule } from "angularfire2/firestore";
 import { AngularFireStorageModule } from "angularfire2/storage";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AngularFireAuthModule } from "angularfire2/auth";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFireModule } from "angularfire2";
 
 // modules
-import { MaterialModule } from "./modules/material.module";
+import { MaterialModule } from "@modules/material.module";
 
 // root
-import { AppComponent } from './app.component';
-import { ROUTER_CONFIG } from './app.router.config';
 import { FIREBASE_CONFIG } from "./app.firebase.config";
+import { ROUTER_CONFIG } from './app.router.config';
+import { AppComponent } from './app.component';
 
 // pages
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { SettingsComponent } from './pages/settings/settings.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/home/home.component';
+import { PageNotFoundComponent } from '@pages/page-not-found/page-not-found.component';
+import { SettingsComponent } from '@pages/settings/settings.component';
+import { ProfileComponent } from '@pages/profile/profile.component';
+import { LoginComponent } from '@pages/login/login.component';
+import { HomeComponent } from '@pages/home/home.component';
 
 // components
-import { UserDropdownInnerComponent } from './components/navbar/user-dropdown/user-dropdown-inner/user-dropdown-inner.component';
-import { PersonalizeSettingsComponent } from './pages/settings/personalize/personalize.component';
-import { UserDropdownComponent } from './components/navbar/user-dropdown/user-dropdown.component';
-import { NavigationSettingsComponent } from './pages/settings/navigation/navigation.component';
-import { InterestsSettingsComponent } from './pages/settings/interests/interests.component';
-import { SecuritySettingsComponent } from './pages/settings/security/security.component';
-import { HomepageSettingsComponent } from './pages/settings/homepage/homepage.component';
-import { AnalyzeSettingsComponent } from './pages/settings/analyze/analyze.component';
-import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
-import { LandingComponent } from './pages/home/landing/landing.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { UserDropdownInnerComponent } from '@components/navbar/user-dropdown/user-dropdown-inner/user-dropdown-inner.component';
+import { DialogEditPictureComponent } from '@pages/settings/profile/dialog-edit-picture/dialog-edit-picture.component';
+import { PersonalizeSettingsComponent } from '@pages/settings/personalize/personalize.component';
+import { UserDropdownComponent } from '@components/navbar/user-dropdown/user-dropdown.component';
+import { SidebarFriendsComponent } from '@components/sidebar-friends/sidebar-friends.component';
+import { NavigationSettingsComponent } from '@pages/settings/navigation/navigation.component';
+import { ToastMessagesComponent } from '@components/toast-messages/toast-messages.component';
+import { InterestsSettingsComponent } from '@pages/settings/interests/interests.component';
+import { SecuritySettingsComponent } from '@pages/settings/security/security.component';
+import { HomepageSettingsComponent } from '@pages/settings/homepage/homepage.component';
+import { ProfileSettingsComponent } from "@pages/settings/profile/profile.component";
+import { AnalyzeSettingsComponent } from '@pages/settings/analyze/analyze.component';
+import { DashboardComponent } from '@pages/home/dashboard/dashboard.component';
+import { LandingComponent } from '@pages/home/landing/landing.component';
+import { SidebarComponent } from '@components/sidebar/sidebar.component';
+import { NavbarComponent } from '@components/navbar/navbar.component';
+import { FooterComponent } from '@components/footer/footer.component';
 
 // services
-import { FireStoreService } from "./services/fire-store.service";
-import { FireAuthService } from "./services/fire-auth.service";
-import { AuthService } from "./services/auth.service";
-import { UserService } from "./services/user.service";
+import { FireToastService } from "@services/fire-toast.service";
+import { FireStoreService } from "@services/fire-store.service";
+import { FireAuthService } from "@services/fire-auth.service";
+import { AuthService } from "@services/auth.service";
+import { UserService } from "@services/user.service";
 
 // guards
-import { AdminGuard } from "./guards/admin.guard";
-import { AuthGuard } from "./guards/auth.guard";
+import { AdminGuard } from "@guards/admin.guard";
+import { AuthGuard } from "@guards/auth.guard";
+
+// directives
+import { DropZoneDirective } from '@directives/drop-zone.directive';
+
+//pipes
+import { OrderByDatePipe } from '@pipes/order-by-date.pipe';
+import { ReversePipe } from "@pipes/reverse.pipe";
 
 //idunno
 import { CommonModule } from "@angular/common";
-import { ProfileSettingsComponent } from "./pages/settings/profile/profile.component";
-import { DialogEditPictureComponent } from './pages/settings/profile/dialog-edit-picture/dialog-edit-picture.component';
-import { DropZoneDirective } from './directives/drop-zone.directive';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { SidebarFriendsComponent } from './components/sidebar-friends/sidebar-friends.component';
-import { ReverseToastsPipe} from './pipes/reverse-toasts.pipe';
-import { ToastMessagesComponent } from './components/toast-messages/toast-messages.component';
-import { FireToastService } from "@services/fire-toast.service";
-import { OrderByIdPipe } from './pipes/order-by-id.pipe';
 
 
 @NgModule({
@@ -72,35 +76,37 @@ import { OrderByIdPipe } from './pipes/order-by-id.pipe';
     AppComponent,
 
     // pages
+    PageNotFoundComponent,
+    SettingsComponent,
+    ProfileComponent,
+    LoginComponent,
     HomeComponent,
 
     // components
-    NavbarComponent,
-    FooterComponent,
-    LoginComponent,
-    UserDropdownComponent,
-    UserDropdownInnerComponent,
-    SettingsComponent,
-    ProfileComponent,
-    LandingComponent,
-    DashboardComponent,
     PersonalizeSettingsComponent,
-    SecuritySettingsComponent,
-    InterestsSettingsComponent,
-    HomepageSettingsComponent,
     NavigationSettingsComponent,
+    UserDropdownInnerComponent,
+    InterestsSettingsComponent,
+    DialogEditPictureComponent,
+    SecuritySettingsComponent,
+    HomepageSettingsComponent,
     AnalyzeSettingsComponent,
     ProfileSettingsComponent,
-    PageNotFoundComponent,
-    DialogEditPictureComponent,
-    DropZoneDirective,
-    SidebarComponent,
     SidebarFriendsComponent,
     ToastMessagesComponent,
+    UserDropdownComponent,
+    DashboardComponent,
+    LandingComponent,
+    SidebarComponent,
+    NavbarComponent,
+    FooterComponent,
+
+    // directives
+    DropZoneDirective,
 
     // pipes
-    ReverseToastsPipe,
-    OrderByIdPipe
+    OrderByDatePipe,
+    ReversePipe
   ],
   imports: [
     //CommonModule,

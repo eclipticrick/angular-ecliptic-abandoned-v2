@@ -1,14 +1,15 @@
 export class ToastMessage {
-  $id?: string;
-  userId?: string;
   date: Date;
-  type: string; //local, global, user todo: global later
+  type: string;
   content: string;
   style: string;
-  dismissed: boolean = false;
+  $id?: string;
 
-  constructor(type, date, content, style?) {
+  constructor(type, date, content, style, id?) {
+    this.type = type;
+    this.date = date;
     this.content = content;
-    this.style = style || 'info';
+    this.style = style;
+    if(id) this.$id = id;
   }
 }

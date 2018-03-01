@@ -1,31 +1,49 @@
 
-<div *ngIf="auth.user$ | async as user">
-  <p>
-    toast-messages works!
-    <input #content>
-    <select #style>
-      <option value="info">info</option>
-      <option value="danger">danger</option>
-      <option value="success">success</option>
-    </select>
-    <button (click)="addUserMessage(user, style.value, content.value)">addGlobal</button>
-    <button (click)="addLocalMessage(style.value, content.value)">addLocalMessage</button>
-  </p>
-  <aside *ngFor="let message of $messages | async | reverseToasts | orderById">
-    <div class="notification"
-         *ngIf="!message.dismissed"
-         [ngClass]="{
-           'is-info': message.style == 'info',
-           'is-danger': message.style == 'danger',
-           'is-success': message.style == 'success'
+<div class="outer-container" *ngIf="auth.user$ | async as user">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+
+
+        <div class="inner-container">
+          <aside *ngFor="let message of (messages$ | async) | orderByDate | reverse | slice:0:5">
+            <div class="alert alert-dismissible fade show"
+                 role="alert"
+                 [ngClass]="{
+           'alert-info':      message.style === 'info',
+           'alert-warning':   message.style === 'warning',
+           'alert-danger':    message.style === 'danger',
+           'alert-success':   message.style === 'success',
+           'alert-primary':   message.style === 'primary',
+           'alert-secondary': message.style === 'secondary',
+           'alert-light':     message.style === 'light',
+           'alert-dark':      message.style === 'dark'
          }">
-      <button (click)="dismissUserMessage(user, message.$id)">x</button>
-      msg-Content: {{ message.content }} <br>
-      msg-Type: {{ message.type }} <br>
-      msg-Style: {{ message.style }} <br>
-      msg-ID: {{ message.$id }} <br>
-      msg-userId: {{ message.userId }}
-      <hr>
+              <!--<strong>{{ message.type }}!</strong>-->
+              {{ message.content }}
+              <button *ngIf="message.type === 'user'"
+                      type="button"
+                      class="close"
+                      (click)="removeUserMessage(user, message)">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <button *ngIf="message.type === 'local'"
+                      type="button"
+                      class="close"
+                      (click)="removeLocalMessage(message)">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </aside>
+        </div>
+
+
+      </div>
     </div>
-  </aside>
+  </div>
 </div>
+
+
+
+
+

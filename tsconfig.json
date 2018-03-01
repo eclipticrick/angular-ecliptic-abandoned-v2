@@ -19,11 +19,12 @@
     "paths": {
       "@components/*": ["app/components/*"],
       "@directives/*": ["app/directives/*"],
+      "@services/*": ["app/services/*"],
+      "@modules/*": ["app/modules/*"],
       "@guards/*": ["app/guards/*"],
       "@models/*": ["app/models/*"],
-      "@modules/*": ["app/modules/*"],
-      "@pages/*": ["app/pages/*"],
-      "@services/*": ["app/services/*"]
+      "@pipes/*": ["app/pipes/*"],
+      "@pages/*": ["app/pages/*"]
     }
   }
 }
