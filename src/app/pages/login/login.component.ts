@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "@services/auth.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { ToastService } from "@services/toast.service";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   signupForm: FormGroup;
   registerForm: FormGroup;
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router, private toast: ToastService) { }
 
   ngOnInit() {
 
@@ -48,18 +49,21 @@ export class LoginComponent implements OnInit {
   onLogin(){
     const promise = this.auth.emailLogin(this.signupForm.value.email, this.signupForm.value.password);
     promise.then(
-      _ => {
-        console.log('successful email login');
-
-      },
-      err => console.warn(err, err.message)
+      _ => console.log('successful email login'),
+      err => {
+        this.toast.danger(err.message);
+        console.warn(err, err.message)
+      }
     )
   }
   onRegister(){
-    const promise = this.auth.emailRegister(this.registerForm.value.email, this.registerForm.value.password)
+    const promise = this.auth.emailRegister(this.registerForm.value.email, this.registerForm.value.password);
     promise.then(
       _ => console.log('successful email register'),
-      err => console.warn(err, err.message)
+      err => {
+        this.toast.danger(err.message);
+        console.warn(err, err.message)
+      }
     )
   }
   onProviderLogin(type:string) {
@@ -70,7 +74,10 @@ export class LoginComponent implements OnInit {
     else if (type === 'google')  promise = this.auth.googleLogin();
     promise.then(
       _ => console.log('successful provider login'),
-      err => console.warn(err, err.message)
+      err => {
+        this.toast.danger(err.message);
+        console.warn(err, err.message)
+      }
     )
   }
 

@@ -6,7 +6,6 @@ import { User } from "@models/user";
 import { MatDialog } from "@angular/material";
 import {DialogEditPictureComponent} from "./dialog-edit-picture/dialog-edit-picture.component";
 import 'rxjs/add/operator/take';
-import {FireToastService} from "@services/fire-toast.service";
 // import 'rxjs/add/operator/map';
 // import 'rxjs/add/operator/do';
 

@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import { FireToastService } from "@services/fire-toast.service";
+import { ToastService } from "@services/toast.service";
 import {AuthService} from "@services/auth.service";
 import {Observable} from "rxjs";
 import {ToastMessage} from "@models/toast-message";
+import {ToastService} from "@services/toast.service";
 
 @Component({
   selector: 'app-toast-messages',
@@ -12,11 +13,14 @@ import {ToastMessage} from "@models/toast-message";
 export class ToastMessagesComponent implements OnInit {
 
   messages$: Observable<ToastMessage[]>;
+  sessionMessages$: Observable<ToastMessage[]>;
 
-  constructor(private auth: AuthService, private toast: FireToastService) { }
+  constructor(private auth: AuthService, private toast: ToastService) { }
 
   ngOnInit() {
     this.messages$ = this.toast.messages$;
+    this.sessionMessages$ = this.toast.localMessages$;
+
     // this.messages$.subscribe(messages => {
     //   console.log('messages$ retrieved!: ', messages)
     // })
@@ -25,6 +29,6 @@ export class ToastMessagesComponent implements OnInit {
     this.toast.removeUserMessage(user, message.$id)
   }
   removeLocalMessage(message){
-    this.toast.removeLocalMessage(message.date)
+    this.toast.removeSessionMessage(message.date)
   }
 }

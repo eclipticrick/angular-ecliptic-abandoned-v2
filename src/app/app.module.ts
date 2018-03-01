@@ -49,9 +49,9 @@ import { NavbarComponent } from '@components/navbar/navbar.component';
 import { FooterComponent } from '@components/footer/footer.component';
 
 // services
-import { FireToastService } from "@services/fire-toast.service";
 import { FireStoreService } from "@services/fire-store.service";
 import { FireAuthService } from "@services/fire-auth.service";
+import { ToastService } from "@services/toast.service";
 import { AuthService } from "@services/auth.service";
 import { UserService } from "@services/user.service";
 
@@ -131,7 +131,7 @@ import { CommonModule } from "@angular/common";
     // services
     FireAuthService,
     FireStoreService,
-    FireToastService,
+    ToastService,
     AuthService,
     UserService,
 
