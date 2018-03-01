@@ -1,0 +1,152 @@
+.row-header{
+  margin-bottom: 40px;
+  .mat-card{
+    padding: 22px 24px;
+  }
+}
+
+.mat-card.setting-selector{
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.1), 0 2px 2px 0 rgba(0,0,0,.07), 0 1px 5px 0 rgba(0,0,0,.06);
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+  padding: 8px 24px;
+  margin-bottom: 8px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  transition: all .3s;
+  z-index: 1;
+  .mat-icon{
+    position: relative;
+    top: 3px;
+  }
+  span{
+    position: relative;
+    bottom: 4px;
+  }
+  &.active{
+    padding: 16px 24px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  }
+}
+
+/* RIGHT SIDE OF THE FORM (all sub pages) */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  .mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .mat-raised-button{
+    width: 100%;
+  }
+
+  h3{
+    font-size: 14px;
+    color: rgba(0,0,0,.4);
+  }
+  h4{
+    font-size: 16px;
+    &.mt{ margin-top: 20px; }
+    &.mb{ margin-bottom: 20px; }
+    &.lh{ line-height: 3.6; }
+  }
+  hr.spacing{
+    border: 0;
+  }
+
+  // profile-settings
+  .mat-card.profile-image{
+    padding: 0;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    img{
+      width: 200px;
+      max-width: 100%;
+    }
+    div.overlay{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      transition: .5s ease;
+      background-color: rgba(0,0,0,.5);
+      &:hover {
+        opacity: 1;
+      }
+      button{
+        padding: 12px 0 0 0;
+        border-radius: 0;
+        position: absolute;
+        //bottom: -2px;
+        bottom: 0;
+        outline: none;
+        background: rgba(255,255,255,.8);
+        .mat-icon{
+          display: block;
+          width: 100%;
+          //height: auto;
+          //font-size: 1em;
+        }
+      }
+      span.cantChange{
+        color: white;
+        position: absolute;
+        top: 40%;
+        width: 100%;
+        padding: 0 16px;
+        text-align: center;
+        user-select: none;
+      }
+    }
+  }
+
+  // interests-settings
+  .mat-accordion{
+    .mat-expansion-panel{
+      overflow: hidden;
+      .mat-expansion-panel-header{
+        .mat-expansion-panel-header-title{
+          width: 50%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: inline-block;
+        }
+        .mat-expansion-panel-header-description{
+
+        }
+      }
+      .mat-expansion-panel-content{
+        .mat-expansion-panel-body{
+
+        }
+      }
+    }
+  }
+
+  // navigation settings (list with icons on the right)
+  .mat-list-item.justify-icons{
+    /deep/ {
+      .mat-list-item-content {
+        justify-content: space-between;
+        div.actions {
+          // this is the div containing the buttons on the right
+          button {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,75 @@
+
+<div class="container container-profile" *ngIf="user$ | async as user">
+  <div class="row justify-content-center">
+    <div class="image-container">
+
+      <img [src]="user.photoURL">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+
+      <mat-card class="content-container">
+        <mat-list>
+
+          <h3 matSubheader>Personal information</h3>
+
+          <mat-list-item>
+            <mat-icon class="copy" matListIcon matTooltip="Click to copy" (click)="onCopy(user.displayName)">content_copy</mat-icon>
+            <h4 matLine>DisplayName</h4>
+            <p matLine class="demo-2"> {{user.displayName}} </p>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon *ngIf="!user.privateEmail"
+                      class="copy"
+                      matListIcon
+                      matTooltip="Click to copy"
+                      (click)="onCopy(user.privateEmail)">
+              content_copy
+            </mat-icon>
+            <mat-icon *ngIf="user.privateEmail"
+                      matListIcon>
+              lock
+            </mat-icon>
+            <h4 matLine>Email</h4>
+            <p *ngIf="!user.privateEmail" matLine class="demo-2"> {{user.email}} </p>
+            <p *ngIf="user.privateEmail" matLine class="demo-2"> private </p>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListIcon>group</mat-icon>
+            <h4 matLine>Account type</h4>
+            <p matLine class="demo-2">{{user.loginType}}</p>
+          </mat-list-item>
+
+        </mat-list>
+
+        <mat-divider></mat-divider>
+
+        <div class="row row-about">
+
+          <div class="col-12 col-md-6">
+            <h3 *ngIf="user.about !== ''">About {{user.displayName}}</h3>
+            <p matLine class="demo-2">
+              {{ user.about }}
+            </p>
+
+          </div>
+
+          <!-- right -->
+          <div class="col-12 col-md-6">
+            <h3>Interests</h3>
+            <mat-chip-list>
+              <mat-chip>Papadum</mat-chip>
+              <mat-chip>Naan</mat-chip>
+              <mat-chip>Dal</mat-chip>
+            </mat-chip-list>
+
+          </div>
+
+        </div>
+      </mat-card>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<app-dashboard *ngIf="auth.user$ | async; else landingPage"></app-dashboard>
+<ng-template  #landingPage>
+  <app-landing></app-landing>
+</ng-template>
+
+
+

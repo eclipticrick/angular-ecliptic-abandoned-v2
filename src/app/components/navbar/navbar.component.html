@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-md navbar-dark">
+  <div class="container">
+    <div (click)="toggleSidenav()" matTooltip="Toggle sidebar">
+      <button  class="navbar-brand" mat-icon-button><mat-icon>fingerprint</mat-icon></button>
+      <a class="navbar-brand">Ecliptic</a>
+    </div>
+
+    <!-- menu & profile icon on the right -->
+    <div class="user-and-menu-mobile">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleCollapse()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- profile button for mobile -->
+      <app-user-dropdown [type]="'div'" [display]="'d-block d-md-none'"></app-user-dropdown>
+    </div>
+
+    <div class="collapse navbar-collapse animate-mobile" id="navbarSupportedContent" [ngClass]="collapse">
+
+      <!-- left -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/" >Home</a>
+        </li>
+
+
+
+        <li *ngIf="auth.user$ | async" class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/settings">Settings</a>
+        </li>
+
+      </ul>
+
+      <!-- right -->
+      <ul class="navbar-nav">
+
+
+
+
+        <li *ngIf="!(auth.user$ | async)" class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/login">Sign-in <fa name="sign-in"></fa></a>
+        </li>
+
+        <!-- profile button for desktop -->
+        <app-user-dropdown [type]="'li'" [display]="'d-none d-md-block'"></app-user-dropdown>
+
+      </ul>
+    </div>
+
+  </div>
+
+</nav>

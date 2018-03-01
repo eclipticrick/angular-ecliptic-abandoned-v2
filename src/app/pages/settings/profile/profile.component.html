@@ -1,0 +1,95 @@
+<!--<div *ngIf="auth.user$ | async as user">
+  <h4>Current: {{user.displayName}}</h4>
+  <label for="displayName">Edit displayName</label>
+  <input type="text" id="displayName" #test>
+  <button (click)="saveDisplayame(user, test.value)"></button>
+</div>-->
+
+
+<mat-card class="form-container" *ngIf="auth.user$ | async as user">
+  <form [formGroup]="updateProfileForm" (ngSubmit)="onUpdate(user)">
+    <div class="d-flex justify-content-center">
+      <mat-card class="profile-image">
+        <img [src]="user.photoURL">
+        <div class="overlay" >
+          <button mat-raised-button
+                  color="default"
+                  *ngIf="user.loginType === 'email'; else cantEditTemplate"
+                  (click)="openEditPictureDialog()"
+                  type="button">
+            <mat-icon>edit</mat-icon>
+            change
+          </button>
+          <ng-template #cantEditTemplate>
+            <span class="cantChange">You can change this picture at {{user.loginType}}.</span>
+          </ng-template>
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- email -->
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <mat-form-field>
+          <input matInput
+                 maxlength="255"
+                 placeholder="Email"
+                 [value]="user.email"
+                 disabled>
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-md-4">
+
+        <mat-form-field>
+          <mat-select formControlName="privateEmail"
+                      placeholder="Set email as">
+            <mat-option [value]="true">Private</mat-option>
+            <mat-option [value]="false">Public</mat-option>
+          </mat-select>
+          <mat-hint align="end">For other users</mat-hint>
+        </mat-form-field>
+
+        <!--<select formControlName="privateEmail">
+          <option [value]="true"  [selected]="user.privateEmail">Private</option>
+          <option [value]="false" [selected]="!user.privateEmail">Public</option>
+        </select>-->
+
+      </div>
+    </div>
+
+    <!-- displayName -->
+    <mat-form-field hintLabel="Max 40 characters">
+      <input matInput
+             formControlName="displayName"
+             minlength="3"
+             maxlength="40"
+             placeholder="Edit display name"
+             #inputDisplayName>
+      <mat-hint align="end">{{inputDisplayName.value?.length || 0}}/40</mat-hint>
+      <mat-error *ngIf="!updateProfileForm.get('displayName').valid && updateProfileForm.get('displayName').touched">
+        <span *ngIf="updateProfileForm.get('displayName').errors['pattern']">Your display name can only contain letters, numbers, dashes (_) or stripes (-)</span>
+        <span *ngIf="updateProfileForm.get('displayName').errors['minlength']">Your display name must be at least 4 characters</span>
+        <span *ngIf="updateProfileForm.get('displayName').errors['required']">Display name is <strong>required</strong></span>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- about -->
+    <mat-form-field>
+      <textarea matInput
+                formControlName="about"
+                placeholder="About me"
+                matTextareaAutosize
+                matAutosizeMinRows="2"
+                matAutosizeMaxRows="10">
+      </textarea>
+      <!--<mat-error *ngIf="!updateProfileForm.get('displayName').valid && updateProfileForm.get('about').touched">
+        <span *ngIf="updateProfileForm.get('about').errors['pattern']">Your about section can not contain any special characters</span>
+      </mat-error>-->
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!updateProfileForm.valid">
+      Update
+    </button>
+  </form>
+
+</mat-card>

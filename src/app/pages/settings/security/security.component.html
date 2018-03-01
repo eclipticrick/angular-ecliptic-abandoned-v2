@@ -1,0 +1,61 @@
+<mat-card class="form-container" *ngIf="auth.user$ | async as user">
+  <form *ngIf="user.loginType === 'email'" [formGroup]="changePaswordForm" (ngSubmit)="onUpdatePassword(user)">
+
+    <h3>Change password</h3>
+
+    <mat-form-field>
+      <input matInput
+             type="password"
+             placeholder="Type in your old Password"
+             formControlName="oldPassword">
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Max 255 characters">
+      <input matInput
+             type="password"
+             #passNew
+             maxlength="255"
+             placeholder="New Password"
+             formControlName="newPassword">
+      <mat-hint align="end">{{passNew.value?.length || 0}}/255</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             type="password"
+             placeholder="Verify new Password"
+             formControlName="verifyPassword">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">
+      Update password
+    </button>
+
+  </form>
+<!--
+    <hr>
+
+  <form [formGroup]="twoFactorAuthForm" (ngSubmit)="onUpdate2FA(user)">
+    <h3>Two-factor Authentication Setup</h3>
+    <mat-slide-toggle #twoFA>
+      <span *ngIf="twoFA.checked">2FA enabled</span>
+      <span *ngIf="!twoFA.checked">2FA disabled</span>
+    </mat-slide-toggle>
+    <div *ngIf="twoFA.checked" class="row">
+      <div class="col-12">
+        <hr>
+      </div>
+      <div class="col-12"><mat-slide-toggle #inputAccountLogin>On account login</mat-slide-toggle></div>
+      <div class="col-12"><mat-slide-toggle [checked]="inputAccountLogin.checked" [disabled]="inputAccountLogin.checked">On account login from new device (recommended)</mat-slide-toggle></div>
+      <div class="col-12"><mat-slide-toggle checked>When accessing the security tab in settings page (recommended)</mat-slide-toggle></div>
+      <div class="col-12">
+        <hr class="spacing">
+        <button mat-raised-button color="warn" type="submit">
+          Save 2 factor authentication settings
+        </button>
+      </div>
+    </div>
+  </form>
+-->
+
+</mat-card>

@@ -1,0 +1,143 @@
+
+<div class="container-fluid header topo-dark"></div>
+
+<!-- TODO: replace with guestGuard! -->
+<div *ngIf="!(auth.user$ | async)" class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <mat-card class="tabs-card">
+        <mat-card-content>
+          <mat-tab-group>
+
+            <!-- login tab -->
+            <mat-tab label="Sign-in">
+
+              <form [formGroup]="signupForm" (ngSubmit)="onLogin()">
+                <mat-form-field>
+                  <input matInput
+                         type="email"
+                         placeholder="Email"
+                         formControlName="email">
+                  <!--<mat-hint>Enter your email adress</mat-hint>-->
+                  <mat-error *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">
+                    <span *ngIf="signupForm.get('email').errors['email']">Please enter a valid email address</span>
+                    <span *ngIf="signupForm.get('email').errors['required']">Email is <strong>required</strong></span>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput
+                         type="password"
+                         placeholder="Enter your password"
+                         formControlName="password">
+                  <mat-error *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched">
+                    Password is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+
+                <a class="forgot-password">Forgot password?</a>
+                <div class="row row-form-btn justify-content-center">
+                  <div class="col-12 col-md-8">
+                    <button class="ecliptic" mat-raised-button color="primary" type="submit" [disabled]="!signupForm.valid">
+                      <fa name="sign-in"></fa> Sign-in
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+            </mat-tab>
+
+            <!-- register tab -->
+            <mat-tab label="Register">
+
+              <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+
+                <mat-form-field>
+                  <input matInput
+                         type="email"
+                         placeholder="Email"
+                         formControlName="email">
+                  <mat-hint>Enter your email adress</mat-hint>
+                  <mat-error *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched">
+                    <span *ngIf="registerForm.get('email').errors['email']">Please enter a valid email address</span>
+                    <span *ngIf="registerForm.get('email').errors['required']">Email is <strong>required</strong></span>
+                  </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field>
+                  <input matInput
+                         type="password"
+                         placeholder="Enter a password"
+                         formControlName="password">
+                  <mat-error *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched">
+                    <span *ngIf="registerForm.get('password').errors['required']"     >Password is <strong>required</strong>!</span>
+                    <span *ngIf="registerForm.get('password').errors['onlyLowercase']">Your Password must contain more than just lower-case characters!</span>
+                    <span *ngIf="registerForm.get('password').errors['onlyUppercase']">Your Password must contain more than just upper-case characters!</span>
+                    <span *ngIf="registerForm.get('password').errors['onlyNumbers']"  >Your Password must contain more than just numbers!</span>
+                    <span *ngIf="registerForm.get('password').errors['sameAsEmail']"  >Your password <strong>can not be the same</strong> as your email!</span>
+                    <span *ngIf="registerForm.get('password').errors['tooShort']"     >Your Password must be <strong>atleast 6 characters</strong> long!</span>
+                    <span *ngIf="registerForm.get('password').errors['tooLong']"      >Your password can not be <strong>longer than 255 characters</strong> long!</span>
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input matInput
+                         type="password"
+                         placeholder="Confirm Password"
+                         formControlName="verify_password">
+                  <mat-hint>Verify your password!</mat-hint>
+                  <mat-error *ngIf="!registerForm.get('verify_password').valid && registerForm.get('verify_password').touched">
+                    <span *ngIf="registerForm.get('verify_password').errors['required']">Password confirmation is <strong>required</strong></span>
+                    <span *ngIf="registerForm.get('verify_password').errors['noMatch']">Passwords do not match!</span>
+                  </mat-error>
+                </mat-form-field>
+
+                <div class="row row-form-btn justify-content-center">
+                  <div class="col-8">
+                    <button class="ecliptic" mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">
+                      <fa name="user-plus"></fa> Register me
+                    </button>
+                  </div>
+                </div>
+
+              </form>
+
+            </mat-tab>
+
+          </mat-tab-group>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <div class="col-12 text-center">
+                <hr class="or">
+                <p class="or"><span>OR</span></p>
+              </div>
+              <div class="col-12 col-md-8">
+                <button class="google" mat-raised-button color="primary" (click)="onProviderLogin('google')">
+                  <fa name="google"></fa> Connect Google
+                </button>
+              </div>
+              <div class="col-12 col-md-8">
+                <button class="facebook" mat-raised-button color="primary" (click)="onProviderLogin('facebook')" disabled>
+                  <fa name="facebook"></fa> Connect Facebook
+                </button>
+              </div>
+              <div class="col-12 col-md-8">
+                <button class="twitter" mat-raised-button color="primary" (click)="onProviderLogin('twitter')" disabled>
+                  <fa name="twitter"></fa> Connect Twitter
+                </button>
+              </div>
+              <div class="col-12 col-md-8">
+                <button class="github" mat-raised-button color="primary" (click)="onProviderLogin('github')" disabled>
+                  <fa name="github"></fa> Connect Github
+                </button>
+              </div>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

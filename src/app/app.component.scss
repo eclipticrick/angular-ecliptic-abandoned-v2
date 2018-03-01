@@ -1,0 +1,9 @@
+/* --== routAnimation container ==-- */
+main#routeAnimation{
+  overflow-x: hidden; // prevent Collapsing margins (http://www.w3.org/TR/css3-box/#collapsing-margins)
+  position: relative;
+  padding-bottom: 40px; // prevent box-shadows from being cut-off at he bottom
+  & > *{
+    display: block;
+  }
+}

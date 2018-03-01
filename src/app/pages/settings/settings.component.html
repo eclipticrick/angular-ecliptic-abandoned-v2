@@ -1,0 +1,70 @@
+<div class="header topo-dark"></div>
+<div class="container">
+  <div class="row row-header">
+    <div class="col-12">
+      <mat-card>
+        <h1>Settings</h1>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <!-- left -->
+    <div class="col-4">
+
+      <mat-card class="setting-selector" routerLink="personalize" routerLinkActive="active">
+        <mat-icon matListIcon>mode_edit</mat-icon>
+        <span>Personalize application</span>
+      </mat-card>
+
+      <mat-card class="setting-selector" routerLink="profile" routerLinkActive="active">
+        <mat-icon matListIcon>person</mat-icon>
+        <span>Edit Profile</span>
+      </mat-card>
+
+      <mat-card class="setting-selector" routerLink="security" routerLinkActive="active">
+        <mat-icon matListIcon>lock</mat-icon>
+        <span>Manage Security</span>
+      </mat-card>
+
+      <mat-card class="setting-selector" routerLink="interests" routerLinkActive="active">
+        <mat-icon matListIcon>favorite</mat-icon>
+        <span>Manage Interests</span>
+      </mat-card>
+
+      <mat-card class="setting-selector" routerLink="homepage" routerLinkActive="active">
+        <mat-icon matListIcon>dashboard</mat-icon>
+        <span>Edit homepage</span>
+      </mat-card>
+
+      <mat-card class="setting-selector" routerLink="navigation" routerLinkActive="active">
+        <mat-icon matListIcon>touch_app</mat-icon>
+        <span>Edit navigation bar</span>
+      </mat-card>
+
+      <mat-card class="setting-selector" routerLink="analyze" routerLinkActive="active">
+        <mat-icon matListIcon>bubble_chart</mat-icon>
+        <span>Analyze me</span>
+      </mat-card>
+
+    </div>
+
+    <!-- right -->
+    <div class="col-8">
+      <router-outlet></router-outlet>
+      <!--<mat-card>
+        <h3 mat-subheader>Manage Interests</h3>
+        <p>Select what kind of functionality you want on this site</p>
+        <mat-selection-list #interests>
+          <mat-list-option>interest1</mat-list-option>
+          <mat-list-option>sadasdas</mat-list-option>
+          <mat-list-option>interedasdsadst1</mat-list-option>
+          <mat-list-option>interdsadasdaest1</mat-list-option>
+          <mat-list-option>indsadasdterest1</mat-list-option>
+        </mat-selection-list>
+
+      </mat-card>-->
+    </div>
+  </div>
+</div>

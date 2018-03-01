@@ -1,0 +1,11 @@
+<div class="header topo-dark"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <mat-card>
+        Dashboard!
+        <h4 *ngIf="auth.user$ | async as user">Welkom {{ user.displayName }}!</h4>
+      </mat-card>
+    </div>
+  </div>
+</div>

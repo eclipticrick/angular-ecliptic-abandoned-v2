@@ -1,0 +1,91 @@
+<mat-card class="form-container" *ngIf="auth.user$ | async as user">
+  <form [formGroup]="updateHomepageForm" (ngSubmit)="onUpdate(user)">
+    <h3>Setup widgets on the homepage</h3>
+    <div class="row">
+
+      <div class="col-12">
+        <mat-slide-toggle formControlName="toggleSearchbar" #toggleSearchbar>Show searchbar</mat-slide-toggle>
+        <hr class="spacing" *ngIf="toggleSearchbar.checked">
+        <mat-form-field *ngIf="toggleSearchbar.checked">
+          <mat-select  formControlName="searchbarType">
+            <mat-option value="google">Google</mat-option>
+            <mat-option value="bing">Bing XD</mat-option>
+            <mat-option value="duckduckgo">DuckDuckGo</mat-option>
+            <mat-option value="youtube">Youtube</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12">
+        <mat-slide-toggle formControlName="toggleShortcuts" checked>Show shortcuts</mat-slide-toggle>
+      </div>
+
+      <div class="col-12">
+        <mat-slide-toggle formControlName="toggleRecent" checked>Show recent activity</mat-slide-toggle>
+      </div>
+
+      <div class="col-12">
+        <hr>
+      </div>
+
+      <div class="col-12 col-sm-6">
+        <h4 class="lh">Top-left widget</h4>
+      </div>
+      <div class="col-12 col-sm-6">
+        <mat-form-field>
+          <mat-select formControlName="widgetTopLeft"
+                      placeholder="Select a widget to be shown in the top-left of the homepage">
+            <mat-option value="none">- no widget -</mat-option>
+            <mat-option value="some">some widget</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-sm-6">
+        <h4 class="lh">Top-right widget</h4>
+      </div>
+      <div class="col-12 col-sm-6">
+        <mat-form-field>
+          <mat-select formControlName="widgetTopRight"
+                      placeholder="Select a widget to be shown in the top-right of the homepage">
+            <mat-option value="none">- no widget -</mat-option>
+            <mat-option value="some">some widget</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-sm-6">
+        <h4 class="lh">Bottom-left widget</h4>
+      </div>
+      <div class="col-12 col-sm-6">
+        <mat-form-field>
+          <mat-select formControlName="widgetBottomLeft"
+                      placeholder="Select a widget to be shown in the bottom-left of the homepage">
+            <mat-option value="none">- no widget -</mat-option>
+            <mat-option value="some">some widget</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-sm-6">
+        <h4 class="lh">Bottom-right widget</h4>
+      </div>
+      <div class="col-12 col-sm-6">
+        <mat-form-field>
+          <mat-select formControlName="widgetBottomRight"
+                      placeholder="Select a widget to be shown in the bottom-right of the homepage">
+            <mat-option value="none">- no widget -</mat-option>
+            <mat-option value="some">some widget</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <button mat-raised-button color="primary" type="submit">
+      Update homepage!
+    </button>
+
+  </form>
+</mat-card>
+

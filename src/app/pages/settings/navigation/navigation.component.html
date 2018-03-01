@@ -1,0 +1,51 @@
+<mat-card class="form-container" *ngIf="auth.user$ | async as user">
+  <form>
+
+    <h3>Select what you want to see in the navigation bar</h3>
+
+    <!--<h4 class="mt">Default site pages</h4>-->
+    <div class="row">
+      <div class="col-12">
+        <mat-list role="list">
+
+          <mat-list-item role="listitem" class="justify-icons">
+            <mat-slide-toggle checked>Homepage</mat-slide-toggle>
+            <div class="actions">
+              <button mat-icon-button>
+                <mat-icon aria-label="Example icon-button with a heart icon">keyboard_arrow_up</mat-icon>
+              </button>
+              <button mat-icon-button>
+                <mat-icon aria-label="Example icon-button with a heart icon">keyboard_arrow_down</mat-icon>
+              </button>
+            </div>
+          </mat-list-item>
+
+        </mat-list>
+      </div>
+      <!--
+      <div class="col-12"><mat-slide-toggle checked>Homepage</mat-slide-toggle></div>
+      <div class="col-12"><mat-slide-toggle>Profile</mat-slide-toggle></div>
+      <div class="col-12"><mat-slide-toggle checked>Settings</mat-slide-toggle></div>
+      <div class="col-12"><mat-slide-toggle checked disabled>Logo (sidebar toggle)</mat-slide-toggle></div>
+      <div class="col-12"><mat-slide-toggle checked disabled>User dropdown</mat-slide-toggle></div>
+      -->
+    </div>
+
+    <!--<h4 class="mt">My interests</h4>
+    <div class="row">
+      <div class="col-12"><mat-slide-toggle>Crypto currency</mat-slide-toggle></div>
+      <div class="col-12"><mat-slide-toggle>Learning environment</mat-slide-toggle></div>
+    </div>
+
+    <hr>
+
+    <h3>Select what you want to see in the sidebar</h3>
+
+    <h4 class="mt">My interests</h4>
+    <div class="row">
+      <div class="col-12"><mat-slide-toggle checked>Crypto currency</mat-slide-toggle></div>
+      <div class="col-12"><mat-slide-toggle checked>Learning environment</mat-slide-toggle></div>
+    </div>-->
+
+  </form>
+</mat-card>

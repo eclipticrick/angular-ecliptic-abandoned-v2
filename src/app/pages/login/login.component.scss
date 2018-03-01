@@ -1,0 +1,111 @@
+
+.mat-card.tabs-card {
+  // margin: 40px auto;
+  // margin-top: 28px;
+  padding: 0;
+  .mat-card-content{
+    min-height: 325px;
+    /deep/ {
+
+      // content-body (everything from below tabs untill 'OR')
+      .mat-tab-body-content {
+        padding: 24px 24px 0 24px;
+        overflow: hidden;
+
+        // all containers for form inputs (login & register)
+        .mat-form-field {
+          width: 100%;
+          margin-bottom: 16px;
+          input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px #fff inset;
+            //-webkit-text-fill-color: yellow !important;
+          }
+          .mat-error{
+            span {
+              display: block;
+            }
+          }
+        }
+
+        // login & register buttons
+        .row-form-btn{
+          margin-top: 48px;
+        }
+        .forgot-password{
+          font-size: 12px;
+          color: #00A0DC;
+          float: right;
+          cursor: pointer;
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  .mat-card-actions{
+    padding: 24px;
+    hr.or{}
+    p.or{
+      margin-top: -28px;
+      margin-bottom: 60px;
+      span {
+        padding: 0 24px;
+        background: white;
+      }
+    }
+  }
+  .mat-raised-button.mat-default, // dark ripple effect & dark text
+  .mat-raised-button.mat-primary{ // light ripple effect & white text
+    width: 100%;
+    margin-bottom: 16px;
+    outline: none;
+    &.ecliptic { background: #ff6600; }
+
+    //&.google-chrome1 { background: #4285F4; }
+    //&.google-chrome2 { background: #EA4335; }
+    //&.google-chrome3 { background: #34A853; }
+    //&.google-chrome4 { background: #FBBC05; }
+
+    &.github  { background: #222222; }
+    //&.apple   { background: #A6B1B7; }
+    //&.android { background: #A4C639; }
+
+
+    //&.rss         { background: #ff6600; }
+    //&.soundcloud  { background: #FF5500; }
+    //&.stumbleupon { background: #E94826; }
+    //&.reddit      { background: #ff4500; }
+    &.google      { background: #DB4437; }
+    //&.youtube     { background: #ff0000; }
+    //&.pinterest   { background: #BD081C; }
+    //&.yahoo       { background: #500095; }
+    //&.tumblr      { background: #32506d; }
+    &.facebook    { background: #365899; }
+    //&.facebook2   { background: #4267B2; }
+    //&.linkedin    { background: #007BB5; }
+    //&.linkedin2   { background: #00A0DC; }
+    //&.dropbox     { background: #007ee5; }
+    &.twitter     { background: #1DA1F2; }
+    //&.vine        { background: #00b489; }
+    //&.whatsapp    { background: #25D366; }
+    //&.spotify     { background: #00e461; }
+    //&.vimeo       { background: #aad450; }
+    //&.instagram   { background: #FFDC7D; }
+    //&.snapchat    { background: #FFFC00; }
+
+    &[disabled] { background: #e8e8e8; }
+  }
+}
+
+.mat-tab-group{
+  /deep/ {
+    .mat-tab-labels {
+      justify-content: space-evenly;
+      .mat-tab-label{
+        text-transform: uppercase;
+        width: 50%;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<mat-card class="form-container" *ngIf="auth.user$ | async as user">
+  <form [formGroup]="updateThemeForm" (ngSubmit)="onUpdate(user)">
+    <mat-form-field>
+      <mat-select formControlName="name"
+                  placeholder="Select a theme for this site">
+        <mat-option value="default">Default</mat-option>
+        <mat-option value="basic">Very basic</mat-option>
+        <mat-option value="blue">Ocean Blue</mat-option>
+        <mat-option value="green">Leaf Green</mat-option>
+        <mat-option value="violet">Violet</mat-option>
+        <mat-option value="gold">Emperers Gold</mat-option>
+        <mat-option value="copper">Metalic Copper</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-slide-toggle formControlName="dark">Dark theme</mat-slide-toggle>
+    <hr class="spacing">
+    <button mat-raised-button color="primary" type="submit" [disabled]="!updateThemeForm.valid">
+      Set theme!
+    </button>
+  </form>
+</mat-card>
