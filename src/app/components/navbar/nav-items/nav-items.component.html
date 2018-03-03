@@ -1,0 +1,15 @@
+<div class="nav-items">
+  <button mat-button
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLink="/">
+    Home
+  </button>
+  <button *ngIf="auth.user$ | async"
+          mat-button
+          routerLinkActive="active"
+          routerLink="/settings">
+    Settings
+  </button>
+</div>
+

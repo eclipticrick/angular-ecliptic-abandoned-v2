@@ -1,80 +1,49 @@
-@keyframes hideNav {
-  0%   { opacity: 1; display: block }
-  99%  { opacity: 0; display: block }
-  100% { opacity: 0; display: none  }
-}
-@keyframes showNav {
-  0%   { opacity: 0; display: none  }
-  30%  { opacity: 0; display: block }
-  100% { opacity: 1; display: block }
-}
+// main toolbar styling
 
-@media (max-width: 767px){
-  .animate-mobile{
-    display: block;
-    animation: .5s linear;
-  }
-  .closed {
-    transition: max-height .5s cubic-bezier(0, 0, 0, 1); //fast start & slow end
-    animation-name: hideNav;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-  }
-  .open {
-    transition: max-height .5s cubic-bezier(1, 0, 1, 1); //slow start & fast end
-    animation-name: showNav;
-    opacity: 1;
-    max-height: 1200px;
-  }
-}
+.mat-toolbar {
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
 
 
-//bootstrap overrides
-.navbar{
-  user-select: none;
-  cursor: default;
-  background: #222;
-  color: #e8e8e8;
-  box-shadow:
-    0 3px 1px -2px rgba(0, 0, 0, .2 ),
-    0 2px 2px 0    rgba(0, 0, 0, .14),
-    0 1px 5px 0    rgba(0, 0, 0, .12);
-  z-index: 2;
-  //letter-spacing: 2px;
-  .navbar-brand {
-    cursor: pointer;
-    letter-spacing: 2px;
-    &.mat-icon-button{
-      width: 32px;
-      height: 32px;
-      line-height: 16px;
-      top: -3px;
-      outline: 0;
+
+  // toolbar row in the main toolbar
+  .mat-toolbar-row {
+    button.logo {
+      transform: scale(1.4);
+    }
+
+    // if the toolbar is the mobile-toolbar
+    &.mobile-toolbar-row {
+      z-index: 11;
+    }
+    .nav-spacer {
+      flex: 1 1 auto;
     }
   }
 
-  .navbar-toggler{
-    border-color: transparent;
-    outline: none;
+  // class added to mobile & second (interest) menu
+  .mat-toolbar-row-small {
+    padding: 0;
+    height: 36px;
+    app-nav-items {
+      width: 100%;
+    }
   }
-  .nav-item{
-    &.active{
-      .nav-link{
-        color: #ffffff;
-        font-weight: bold;
+
+  // for interest-toolbar (second toolbar)
+  &.second-toolbar {
+    z-index: 9;
+    min-height: initial;
+
+    // all toolbar rows inside the second toolbar
+    .mat-toolbar-row {
+      button,
+      /deep/ button {
+        border-radius: 0;
+        flex: 1 1 auto;
       }
     }
-    .nav-link{
-      cursor: pointer;
-    }
-    //&.dropdown
   }
-
-}
-
-// div that contains the mobile-menu-toggle & mobil-user-dropdown
-.user-and-menu-mobile{
-  display: flex;
 }
 

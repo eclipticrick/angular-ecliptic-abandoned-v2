@@ -1,0 +1,10 @@
+.nav-items{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  button,
+  /deep/ button {
+    border-radius: 0;
+    flex: 1 1 auto;
+  }
+}

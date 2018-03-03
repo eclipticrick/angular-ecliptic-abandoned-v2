@@ -5,7 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ReversePipe implements PipeTransform {
   transform(arr) {
-    console.log('reversing: ', arr)
     if(!arr) return;
     const copy = arr.slice();
     return copy.reverse();

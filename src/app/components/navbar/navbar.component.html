@@ -1,52 +1,103 @@
-<nav class="navbar navbar-expand-md navbar-dark">
-  <div class="container">
-    <div (click)="toggleSidenav()" matTooltip="Toggle sidebar">
-      <button  class="navbar-brand" mat-icon-button><mat-icon>fingerprint</mat-icon></button>
-      <a class="navbar-brand">Ecliptic</a>
+<mat-toolbar color="primary" #navbar>
+  <mat-toolbar-row>
+    <!--signal_wifi_off-->
+    <!--account_circle-->
+    <button mat-icon-button
+            matTooltipPosition="right"
+            matTooltip="Toggle sidebar"
+            (click)="ui.openSidebarLeft()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div *ngIf="navbarWidth >= 768">
+      <app-nav-items></app-nav-items>
     </div>
 
-    <!-- menu & profile icon on the right -->
-    <div class="user-and-menu-mobile">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleCollapse()">
-        <span class="navbar-toggler-icon"></span>
+    <span class="nav-spacer"></span>
+
+    <button mat-button
+            class="logo"
+            routerLink="/">
+      <mat-icon>fingerprint</mat-icon>
+      <span>Ecliptic</span>
+    </button>
+
+    <span class="nav-spacer"></span>
+
+    <!-- when logged out -->
+    <button *ngIf="!(auth.user$ | async)"
+            mat-button
+            routerLinkActive="active"
+            routerLink="/login">
+      Login
+    </button>
+
+    <!-- when logged in -->
+    <button *ngIf="auth.user$ | async"
+            mat-icon-button
+            [matMenuTriggerFor]="settingsMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <button *ngIf="auth.user$ | async"
+            mat-icon-button
+            [matTooltipPosition]="ui.sidebarRightState ? 'below' : 'left'"
+            matTooltip="Toggle friends"
+            (click)="ui.toggleSidebarRight(); updateNavbarWidthMultipleTimes()">
+      <mat-icon>people</mat-icon>
+    </button>
+
+    <!-- settings menu (hidden by default) -->
+    <mat-menu #settingsMenu="matMenu">
+      <button *ngIf="auth.user$ | async as user" mat-menu-item [routerLink]="['/profile', user.uid]">
+        <mat-icon>account_circle</mat-icon> Profile
       </button>
+      <button mat-menu-item routerLink="/settings">
+        <mat-icon>settings</mat-icon> Settings
+      </button>
+      <button mat-menu-item [matMenuTriggerFor]="interestsMenu">
+        <mat-icon>favorite</mat-icon> Interests
+      </button>
+      <button mat-menu-item routerLink="/feedback">
+        <mat-icon>question_answer</mat-icon> Give feedback
+      </button>
+      <button mat-menu-item routerLink="/help">
+        <mat-icon>help</mat-icon> Help
+      </button>
+      <button mat-menu-item (click)="onSignOut()">
+        <mat-icon>arrow_back</mat-icon> Sign-out
+      </button>
+    </mat-menu>
 
-      <!-- profile button for mobile -->
-      <app-user-dropdown [type]="'div'" [display]="'d-block d-md-none'"></app-user-dropdown>
-    </div>
+    <!-- settings menu > interests -->
+    <mat-menu #interestsMenu="matMenu">
+      <button mat-menu-item>Crypto currency</button>
+      <button mat-menu-item>Learning environment</button>
+      <button mat-menu-item>Habit tracker</button>
+      <button mat-menu-item>Money insights</button>
+      <button mat-menu-item>About the developer</button>
+    </mat-menu>
 
-    <div class="collapse navbar-collapse animate-mobile" id="navbarSupportedContent" [ngClass]="collapse">
+  </mat-toolbar-row>
 
-      <!-- left -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <a class="nav-link" routerLink="/" >Home</a>
-        </li>
+  <!-- mobile -->
+  <mat-toolbar-row *ngIf="navbarWidth < 768" class="mobile-toolbar-row mat-toolbar-row-small">
+    <app-nav-items></app-nav-items>
+  </mat-toolbar-row>
+</mat-toolbar>
 
+<mat-toolbar class="second-toolbar" color="primary">
+  <mat-toolbar-row class="mat-toolbar-row-small">
 
+    <button mat-button>
+      <mat-icon>account_balance_wallet</mat-icon>
+    </button>
+    <button mat-button>
+      <mat-icon>attach_money</mat-icon>
+    </button>
+    <button mat-button>
+      <mat-icon>trending_up</mat-icon>
+    </button>
 
-        <li *ngIf="auth.user$ | async" class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/settings">Settings</a>
-        </li>
-
-      </ul>
-
-      <!-- right -->
-      <ul class="navbar-nav">
-
-
-
-
-        <li *ngIf="!(auth.user$ | async)" class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/login">Sign-in <fa name="sign-in"></fa></a>
-        </li>
-
-        <!-- profile button for desktop -->
-        <app-user-dropdown [type]="'li'" [display]="'d-none d-md-block'"></app-user-dropdown>
-
-      </ul>
-    </div>
-
-  </div>
-
-</nav>
+  </mat-toolbar-row>
+</mat-toolbar>

@@ -117,7 +117,7 @@ export class ToastService {
     else this.addSessionMessage('dark', message)
   }
 
-  private saveUserMessage(user:User, style, content, canNotBeDismissed?:boolean = false) {
+  private saveUserMessage(user:User, style, content, canNotBeDismissed:boolean = false) {
     const message = new ToastMessage('user', new Date(), content, style, canNotBeDismissed);
     const object = JSON.parse(JSON.stringify(message));
     this.afs.collection(`users/${user.uid}/messages`).add(object);

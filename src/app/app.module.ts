@@ -68,6 +68,8 @@ import { ReversePipe } from "@pipes/reverse.pipe";
 
 //idunno
 import { CommonModule } from "@angular/common";
+import {UiService} from "@services/ui.service";
+import { NavItemsComponent } from './components/navbar/nav-items/nav-items.component';
 
 
 @NgModule({
@@ -106,7 +108,8 @@ import { CommonModule } from "@angular/common";
 
     // pipes
     OrderByDatePipe,
-    ReversePipe
+    ReversePipe,
+    NavItemsComponent
   ],
   imports: [
     //CommonModule,
@@ -134,6 +137,7 @@ import { CommonModule } from "@angular/common";
     ToastService,
     AuthService,
     UserService,
+    UiService,
 
     // guards
     AuthGuard,

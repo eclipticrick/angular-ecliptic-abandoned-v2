@@ -3,20 +3,28 @@
 
 
 
-<mat-sidenav-container style="position: absolute;top:0;left:0;right:0;bottom:0;">
-  <mat-sidenav [opened]="false" mode="over" #sidenav> <!--mode="side"-->
-               <!--mode="push"-->
-               <!--opened="false"-->
-               <!--[fixedInViewport]="0"-->
+<mat-sidenav-container>
+  <mat-sidenav [opened]="sidebarLeftState" mode="over" #sidebarLeft>
     <app-sidebar></app-sidebar>
   </mat-sidenav>
+
+
+  <mat-sidenav [opened]="sidebarRightState" mode="side" position="end" #sidebarRight>
+    <app-sidebar-friends></app-sidebar-friends>
+  </mat-sidenav>
+
+
   <mat-sidenav-content>
-    <app-navbar (onToggleSidenav)="sidenav.toggle()"></app-navbar>
+    <app-navbar></app-navbar>
     <main id="routeAnimation" [@routeAnimation]="getComponentDepth(myOutlet)">
       <router-outlet #myOutlet="outlet"></router-outlet>
     </main>
     <app-toast-messages></app-toast-messages>
-    <!--<button mat-button block (click)="sidenav.toggle()">SIDENAV TEST TEST TEST TEST TEST TEST TEST toggle</button>-->
+
+    <!-- TEMP -->
+    <app-user-dropdown [type]="'div'" [display]="''"></app-user-dropdown>
+    <!-- /TEMP -->
+
   </mat-sidenav-content>
 </mat-sidenav-container>
 

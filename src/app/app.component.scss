@@ -1,3 +1,13 @@
+/* --== Container of all content (including the side navs) ==-- */
+.mat-sidenav-container {
+  position: absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+}
+
+
 /* --== routAnimation container ==-- */
 main#routeAnimation{
   overflow-x: hidden; // prevent Collapsing margins (http://www.w3.org/TR/css3-box/#collapsing-margins)
@@ -6,4 +16,12 @@ main#routeAnimation{
   & > *{
     display: block;
   }
+}
+
+
+/* defaults */
+.mat-icon-button,
+button,
+/deep/ button {
+  outline: none !important;
 }

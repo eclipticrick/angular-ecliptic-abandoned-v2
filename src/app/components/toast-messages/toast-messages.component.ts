@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import { ToastService } from "@services/toast.service";
 import {AuthService} from "@services/auth.service";
 import {Observable} from "rxjs";
 import {ToastMessage} from "@models/toast-message";
