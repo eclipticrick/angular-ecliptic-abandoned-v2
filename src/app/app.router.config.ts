@@ -52,7 +52,7 @@ export const ROUTER_CONFIG: Route[] = [
       { path: 'analyze', component: AnalyzeSettingsComponent }
     ]
   },
-  { path: '404', component: PageNotFoundComponent },
+  { path: '404', component: PageNotFoundComponent, data: { depth: 6 } },
   { path: '**', redirectTo: '404', pathMatch: 'full' }
 
   // , canActivate: [AuthGuard]

@@ -9,7 +9,7 @@ export class AdminGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.auth.user$
+    return this.auth.user$ //TODO:  .pipe(take(1).map())  ??
 
     // activate subscription, do something, destroy subscription
       .take(1)

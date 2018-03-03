@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "@services/user.service";
 import {AuthService} from "@services/auth.service";
 import {UserInterest} from "@models/user";
+import {ToastService} from "@services/toast.service";
 
 @Component({
   selector: 'app-interests-settings',
@@ -11,7 +12,7 @@ import {UserInterest} from "@models/user";
 export class InterestsSettingsComponent implements OnInit {
   interests = {};
   interestsList: UserInterest[];
-  constructor(private auth: AuthService, private userSvc: UserService) { }
+  constructor(private auth: AuthService, private userSvc: UserService, private toast: ToastService) { }
 
   ngOnInit() {
     this.interestsList = [

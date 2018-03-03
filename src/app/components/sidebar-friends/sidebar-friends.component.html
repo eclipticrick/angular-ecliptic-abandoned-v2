@@ -1,3 +1,70 @@
-<p>
-  sidebar-friends works!
-</p>
+<div class="friends-container">
+  <div *ngIf="auth.user$ | async as user">
+
+    <mat-toolbar class="mat-toolbar-profile mat-shadow">
+
+      <mat-toolbar-row class="mat-toolbar-profile">
+        <div class="image no-select">
+          <img [src]="user.photoURL">
+          <mat-icon class="status" [ngClass]="status">fiber_manual_record</mat-icon>
+        </div>
+        <div class="cut-text">
+          <span class="displayName cut-text">{{ user.displayName }}</span>
+          <span class="email cut-text">{{ user.email }}</span>
+        </div>
+      </mat-toolbar-row>
+
+      <mat-toolbar-row class="mat-toolbar-info no-select">
+        <mat-form-field>
+          <mat-select [(value)]="status">
+            <mat-icon class="mat-icon-small status in-select online ">fiber_manual_record</mat-icon>
+            <mat-option class="mat-option-status" value="online">
+              Online
+            </mat-option>
+            <mat-icon class="mat-icon-small status in-select busy">fiber_manual_record</mat-icon>
+            <mat-option class="mat-option-status" value="busy">
+              Busy
+            </mat-option>
+            <mat-icon class="mat-icon-small status in-select away">fiber_manual_record</mat-icon>
+            <mat-option class="mat-option-status" value="away">
+              Away
+            </mat-option>
+            <mat-icon class="mat-icon-small status in-select incognito">fiber_manual_record</mat-icon>
+            <mat-option class="mat-option-status" value="incognito">
+              Incognito
+            </mat-option>
+            <mat-icon class="mat-icon-small status in-select offline">fiber_manual_record</mat-icon>
+            <mat-option class="mat-option-status" value="offline">
+              Offline
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-toolbar-row>
+
+    </mat-toolbar>
+
+
+    <mat-list class="mat-list-friends">
+      <h3 mat-subheader>Pinned</h3>
+      <a mat-list-item *ngFor="let friend of pinned" (click)="onFriendClick(friend)">
+        <div mat-list-icon class="image">
+          <img [src]="user.photoURL" mat-list-icon>
+          <mat-icon class="mat-icon-small status" [ngClass]="friend.status">fiber_manual_record</mat-icon>
+        </div>
+        <h4 mat-line>{{ friend.name }}</h4>
+        <p mat-line> {{ friend.lastMessage }} </p>
+      </a>
+      <mat-divider></mat-divider>
+      <h3 mat-subheader>Friends</h3>
+      <a mat-list-item *ngFor="let friend of friends" (click)="onFriendClick(friend)">
+        <div mat-list-icon class="image">
+          <img [src]="user.photoURL" mat-list-icon>
+          <mat-icon class="mat-icon-small status" [ngClass]="friend.status">fiber_manual_record</mat-icon>
+        </div>
+        <h4 mat-line>{{ friend.name }}</h4>
+        <p mat-line> {{ friend.lastMessage }} </p>
+      </a>
+    </mat-list>
+
+  </div>
+</div>

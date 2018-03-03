@@ -3,6 +3,8 @@ import { UserService } from "@services/user.service";
 import { AuthService } from "@services/auth.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import {User} from "@models/user";
+import {ToastService} from "@services/toast.service";
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-personalize-settings',
@@ -13,7 +15,7 @@ export class PersonalizeSettingsComponent implements OnInit {
 
   updateThemeForm: FormGroup;
 
-  constructor(private auth: AuthService, private userSvc: UserService) { }
+  constructor(private auth: AuthService, private userSvc: UserService, private toast: ToastService) { }
 
   ngOnInit() {
     this.updateThemeForm = new FormGroup({
@@ -27,7 +29,7 @@ export class PersonalizeSettingsComponent implements OnInit {
       )
     });
 
-    this.auth.user$.take(1).subscribe(user => {
+    this.auth.user$.pipe(take(1)).subscribe(user => {
       this.updateThemeForm.setValue({
         name: user.settings.theme.name,
         dark: user.settings.theme.dark
@@ -41,8 +43,8 @@ export class PersonalizeSettingsComponent implements OnInit {
 
     const promise = this.userSvc.updateUser(user);
     promise.then(
-      _ => { console.log('user\'s theme updated successfully!') },
-      err => { console.log(err, err.message) }
+      _ => this.toast.success('theme updated successfully!'),
+      e => this.toast.danger(e.message)
     )
   }
 

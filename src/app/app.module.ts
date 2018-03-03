@@ -30,10 +30,8 @@ import { LoginComponent } from '@pages/login/login.component';
 import { HomeComponent } from '@pages/home/home.component';
 
 // components
-import { UserDropdownInnerComponent } from '@components/navbar/user-dropdown/user-dropdown-inner/user-dropdown-inner.component';
 import { DialogEditPictureComponent } from '@pages/settings/profile/dialog-edit-picture/dialog-edit-picture.component';
 import { PersonalizeSettingsComponent } from '@pages/settings/personalize/personalize.component';
-import { UserDropdownComponent } from '@components/navbar/user-dropdown/user-dropdown.component';
 import { SidebarFriendsComponent } from '@components/sidebar-friends/sidebar-friends.component';
 import { NavigationSettingsComponent } from '@pages/settings/navigation/navigation.component';
 import { ToastMessagesComponent } from '@components/toast-messages/toast-messages.component';
@@ -87,7 +85,6 @@ import { NavItemsComponent } from './components/navbar/nav-items/nav-items.compo
     // components
     PersonalizeSettingsComponent,
     NavigationSettingsComponent,
-    UserDropdownInnerComponent,
     InterestsSettingsComponent,
     DialogEditPictureComponent,
     SecuritySettingsComponent,
@@ -96,7 +93,6 @@ import { NavItemsComponent } from './components/navbar/nav-items/nav-items.compo
     ProfileSettingsComponent,
     SidebarFriendsComponent,
     ToastMessagesComponent,
-    UserDropdownComponent,
     DashboardComponent,
     LandingComponent,
     SidebarComponent,

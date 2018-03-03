@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "@services/user.service";
 import {AuthService} from "@services/auth.service";
+import {ToastService} from "@services/toast.service";
 
 @Component({
   selector: 'app-analyze-settings',
@@ -9,7 +10,7 @@ import {AuthService} from "@services/auth.service";
 })
 export class AnalyzeSettingsComponent implements OnInit {
 
-  constructor(private auth: AuthService, private userSvc: UserService) { }
+  constructor(private auth: AuthService, private userSvc: UserService, private toast: ToastService) { }
 
   ngOnInit() {
   }

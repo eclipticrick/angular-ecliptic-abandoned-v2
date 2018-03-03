@@ -3,22 +3,35 @@
 .mat-toolbar {
   position: relative;
   z-index: 10;
-  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12); //TODO ?
 
 
 
   // toolbar row in the main toolbar
   .mat-toolbar-row {
-    button.logo {
-      transform: scale(1.4);
+    .logo {
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      margin: auto 12px;
+      height: 100%;
+      transition: background .24s;
+      &.background{
+        background: rgba(255,255,255,.1);
+      }
+      .mat-icon {
+
+      }
+      span {
+        //font-size: 24px;
+        letter-spacing: 2px;
+        margin-left: 6px;
+      }
     }
 
     // if the toolbar is the mobile-toolbar
     &.mobile-toolbar-row {
       z-index: 11;
-    }
-    .nav-spacer {
-      flex: 1 1 auto;
     }
   }
 

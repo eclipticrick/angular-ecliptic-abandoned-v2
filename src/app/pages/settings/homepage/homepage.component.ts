@@ -3,6 +3,8 @@ import {UserService} from "@services/user.service";
 import {AuthService} from "@services/auth.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "@models/user";
+import {ToastService} from "@services/toast.service";
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-homepage-settings',
@@ -13,7 +15,7 @@ export class HomepageSettingsComponent implements OnInit {
 
   updateHomepageForm: FormGroup;
 
-  constructor(private auth: AuthService, private userSvc: UserService) { }
+  constructor(private auth: AuthService, private userSvc: UserService, private toast: ToastService) { }
 
   ngOnInit() {
     this.updateHomepageForm = new FormGroup({
@@ -51,7 +53,7 @@ export class HomepageSettingsComponent implements OnInit {
       )
     });
 
-    this.auth.user$.take(1).subscribe(user => {
+    this.auth.user$.pipe(take(1)).subscribe(user => {
       this.updateHomepageForm.setValue({
         toggleSearchbar:   user.settings.homepage.searchbar.display,
         searchbarType:     user.settings.homepage.searchbar.type,
@@ -77,8 +79,8 @@ export class HomepageSettingsComponent implements OnInit {
 
     const promise = this.userSvc.updateUser(user);
     promise.then(
-      _ => { console.log('user\'s homepage settings updated successfully!') },
-      err => { console.log(err, err.message) }
+      _ => this.toast.success('homepage settings updated successfully!'),
+      e => this.toast.danger(e.message)
     )
   }
 

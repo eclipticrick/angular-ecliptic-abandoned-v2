@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from "@services/auth.service";
 import { UiService } from "@services/ui.service";
+import {ToastService} from "@services/toast.service";
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   @ViewChild('navbar', { read: ElementRef }) navbar: ElementRef;
   navbarWidth:number;
 
-  constructor(private auth: AuthService, private ui: UiService) {  }
+  constructor(private auth: AuthService, private ui: UiService, private toast: ToastService) {  }
 
   ngOnInit() {  }
 
@@ -28,6 +29,16 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.navbarWidth = this.navbar.nativeElement.offsetWidth;
   }
 
+  onTestPopUps() {
+    this.toast.info('Test info Message!');
+    this.toast.success('Test success Message!');
+    this.toast.warning('Test warning Message!');
+    this.toast.danger('Test danger Message!');
+    this.toast.primary('Test primary Message!');
+    this.toast.secondary('Test secundary Message!');
+    this.toast.light('Test light Message!');
+    this.toast.dark('Test dark Message!');
+  }
 
   // 350ms is how long opening the friends-sidebar takes
   updateNavbarWidthMultipleTimes() {

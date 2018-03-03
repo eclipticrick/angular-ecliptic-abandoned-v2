@@ -8,21 +8,25 @@
             (click)="ui.openSidebarLeft()">
       <mat-icon>menu</mat-icon>
     </button>
+    <div class="logo no-select" [class.background]="navbarWidth >= 768">
+      <mat-icon>fingerprint</mat-icon>
+      <span>Ecliptic</span>
+    </div>
 
     <div *ngIf="navbarWidth >= 768">
       <app-nav-items></app-nav-items>
     </div>
 
-    <span class="nav-spacer"></span>
+    <span class="flex-spacer"></span>
 
-    <button mat-button
+    <!--<button mat-button
             class="logo"
             routerLink="/">
       <mat-icon>fingerprint</mat-icon>
       <span>Ecliptic</span>
     </button>
 
-    <span class="nav-spacer"></span>
+    <span class="flex-spacer"></span>-->
 
     <!-- when logged out -->
     <button *ngIf="!(auth.user$ | async)"
@@ -66,6 +70,9 @@
       </button>
       <button mat-menu-item (click)="onSignOut()">
         <mat-icon>arrow_back</mat-icon> Sign-out
+      </button>
+      <button mat-menu-item (click)="onTestPopUps()">
+        <mat-icon>code</mat-icon> Test Pop-ups
       </button>
     </mat-menu>
 

@@ -5,6 +5,9 @@
   right:0;
   bottom:0;
   left:0;
+  .mat-sidenav{
+    box-shadow: 0 8px 10px -5px rgba(0,0,0,.2), 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12);
+  }
 }
 
 
@@ -24,4 +27,32 @@ main#routeAnimation{
 button,
 /deep/ button {
   outline: none !important;
+}
+/deep/ .mat-icon-small {
+  margin-right: 8px !important;
+  width: 12px !important;
+  height: 12px !important;
+  font-size: 12px;
+}
+
+/* handy classes */
+.cut-text,
+/deep/ .cut-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.no-select,
+/deep/ .no-select {
+  user-select: none;
+}
+
+.flex-spacer,
+/deep/ .flex-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-shadow,
+/deep/ .mat-shadow {
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
 }

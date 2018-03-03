@@ -104,9 +104,9 @@ export class ToastService {
     if(user) this.saveUserMessage(user, 'primary', message, canNotBeDismissed);
     else this.addSessionMessage('primary', message)
   }
-  secundary(message, user?:User, canNotBeDismissed?:boolean) {
-    if(user) this.saveUserMessage(user, 'secundary', message, canNotBeDismissed);
-    else this.addSessionMessage('secundary', message)
+  secondary(message, user?:User, canNotBeDismissed?:boolean) {
+    if(user) this.saveUserMessage(user, 'secondary', message, canNotBeDismissed);
+    else this.addSessionMessage('secondary', message)
   }
   light(message, user?:User, canNotBeDismissed?:boolean) {
     if(user) this.saveUserMessage(user, 'light', message, canNotBeDismissed);

@@ -6,6 +6,8 @@ import { User } from "@models/user";
 import { MatDialog } from "@angular/material";
 import {DialogEditPictureComponent} from "./dialog-edit-picture/dialog-edit-picture.component";
 import 'rxjs/add/operator/take';
+import {ToastService} from "@services/toast.service";
+import {take} from "rxjs/operators";
 // import 'rxjs/add/operator/map';
 // import 'rxjs/add/operator/do';
 
@@ -18,7 +20,7 @@ export class ProfileSettingsComponent implements OnInit {
 
   updateProfileForm: FormGroup;
 
-  constructor(private auth: AuthService, private userSvc: UserService, public dialog: MatDialog) { }
+  constructor(private auth: AuthService, private userSvc: UserService, private toast: ToastService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.updateProfileForm = new FormGroup({
@@ -39,7 +41,7 @@ export class ProfileSettingsComponent implements OnInit {
     // ONLY LETTERS:                    [a-zA-Z][a-zA-Z ]+
     // LETTERS NUMBERS & UNDERSCORES:   ^[a-zA-Z0-9_.-]*$
     // LETTERS NUMBERS AND SPACES       ^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$
-    this.auth.user$.take(1).subscribe(user => {
+    this.auth.user$.pipe(take(1)).subscribe(user => {
       this.updateProfileForm.setValue({
         privateEmail: user.privateEmail,
         displayName: user.displayName,
@@ -61,10 +63,8 @@ export class ProfileSettingsComponent implements OnInit {
 
     const promise = this.userSvc.updateUser(user);
     promise.then(
-      _ => {
-        console.log('user updated successfully!');
-      },
-      err => { console.log(err, err.message) }
+      _ => this.toast.success('profile updated successfully!'),
+      e => this.toast.danger(e.message)
     )
   }
 }

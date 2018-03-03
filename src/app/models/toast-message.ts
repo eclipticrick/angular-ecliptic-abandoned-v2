@@ -7,8 +7,6 @@ export class ToastMessage {
   $id?: string;
 
   constructor(type:string, date:Date, content:string, style:string, canNotBeDismissed:boolean, id?:string) {
-    console.log('mesage created!');
-    console.log('canNotBeDismissed', canNotBeDismissed);
     this.type = type;
     this.date = date;
     this.content = content;

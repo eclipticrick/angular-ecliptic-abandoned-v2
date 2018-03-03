@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { routeAnimation } from "./app.animations";
 import { UiService } from "@services/ui.service";
-// import { FormBuilder, FormGroup } from "@angular/forms";
-// import {FireStoreService} from "@services/fire-store.service";
 
 @Component({
   selector: 'app-root',
@@ -20,14 +18,8 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy{
 
   constructor(private ui: UiService) { }
   ngOnInit() {
-    this.ui.sidebarLeftState$.subscribe(bool => {
-      console.log('sidebarLeftState$', bool);
-      this.sidebarLeftState = bool;
-    });
-    this.ui.sidebarRightState$.subscribe(bool => {
-      console.log('sidebarRightState$', bool);
-      this.sidebarRightState = bool;
-    })
+    this.ui.sidebarLeftState$.subscribe(bool  => this.sidebarLeftState  = bool);
+    this.ui.sidebarRightState$.subscribe(bool => this.sidebarRightState = bool)
   }
   getComponentDepth(outlet) {
     return outlet.activatedRouteData['depth'];

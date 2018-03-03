@@ -2,21 +2,34 @@ import { trigger, state, transition, group, query, style, animate, keyframes } f
 
 export let routeAnimation = trigger('routeAnimation', [
 
-  // animation for component with depth 1 to component with depth 2
+  // animation for component with depth x to component with depth > x
   transition(
     '0 => 1, ' +
     '0 => 2, ' +
     '0 => 3, ' +
     '0 => 4, ' +
+    '0 => 5, ' +
+    '0 => 6, ' +
 
     '1 => 2, ' +
     '1 => 3, ' +
     '1 => 4, ' +
+    '1 => 5, ' +
+    '1 => 6, ' +
 
     '2 => 3, ' +
     '2 => 4, ' +
+    '2 => 5, ' +
+    '2 => 6, ' +
 
-    '3 => 4', [
+    '3 => 4, ' +
+    '3 => 5, ' +
+    '3 => 6, ' +
+
+    '4 => 5, ' +
+    '4 => 6, ' +
+
+    '5 => 6', [
 
     // set initial height at the beginning of the animation to what it would be at the end of the animation
     style({ height: '!' }),
@@ -24,7 +37,7 @@ export let routeAnimation = trigger('routeAnimation', [
     // set up initial position of the component that is entering the scene
     query(':enter', style({ transform: 'translateX(100%)' })),
 
-    // position absolute to have complete controle over the positioning on the page
+    // position absolute to have complete control over the positioning on the page
     query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0, right: 0 })),
 
     // do at once
@@ -52,7 +65,20 @@ export let routeAnimation = trigger('routeAnimation', [
     '4 => 0, ' +
     '4 => 1, ' +
     '4 => 2, ' +
-    '4 => 3', [
+    '4 => 3, ' +
+
+    '5 => 0, ' +
+    '5 => 1, ' +
+    '5 => 2, ' +
+    '5 => 3, ' +
+    '5 => 4, ' +
+
+    '6 => 0, ' +
+    '6 => 1, ' +
+    '6 => 2, ' +
+    '6 => 3, ' +
+    '6 => 4, ' +
+    '6 => 5', [
     style({ height: '!' }),
     query(':enter', style({ transform: 'translateX(-100%)' })),
     query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0, right: 0 })),
@@ -63,17 +89,17 @@ export let routeAnimation = trigger('routeAnimation', [
   ])
 ]);
 
-export let collapseAnimation = trigger('collapseAnimation', [
-  state('open', style({
-    opacity: '1',
-    display: 'block',
-    transform: 'translate3d(0, 0, 0)'
-  })),
-  state('closed',   style({
-    opacity: '0',
-    display: 'none',
-    transform: 'translate3d(0, -100%, 0)'
-  })),
-  transition('closed => open', animate('200ms ease-in')),
-  transition('open => closed', animate('100ms ease-out'))
-]);
+// export let collapseAnimation = trigger('collapseAnimation', [
+//   state('open', style({
+//     opacity: '1',
+//     display: 'block',
+//     transform: 'translate3d(0, 0, 0)'
+//   })),
+//   state('closed',   style({
+//     opacity: '0',
+//     display: 'none',
+//     transform: 'translate3d(0, -100%, 0)'
+//   })),
+//   transition('closed => open', animate('200ms ease-in')),
+//   transition('open => closed', animate('100ms ease-out'))
+// ]);

@@ -1,12 +1,17 @@
 .outer-container{
   position: absolute;
-  top: 80px;
+  top: 138px;
   left: 0;
   right: 0;
   z-index: 20;
   .inner-container{
     position: absolute;
-    right: 0;
+    right: 28px;
+    .alert {
+      padding: 14px 52px 14px 18px;
+      border-radius: 2px;
+      border: 0;
+    }
     button {
       outline: none;
     }

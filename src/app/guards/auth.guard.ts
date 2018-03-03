@@ -6,10 +6,12 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
+import {take} from "rxjs/operators";
+import {ToastService} from "@services/toast.service";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private auth: AuthService, private router: Router, private location: Location) {}
+  constructor(private auth: AuthService, private router: Router, private location: Location, private toast: ToastService) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -17,7 +19,7 @@ export class AuthGuard implements CanActivate {
     return this.auth.user$
 
     // activate subscription, do something, destroy subscription
-      .take(1)
+      .pipe(take(1))
 
       // map to a boolean
       .map(user => !!(user))
@@ -25,8 +27,7 @@ export class AuthGuard implements CanActivate {
       // execute this on observable value retrieval (do something)
       .do(isLoggedIn => {
         if(!isLoggedIn) {
-          console.warn('You must be logged in to perform this action!');
-          //this.location.back();
+          this.toast.warning('You must be logged in to visit "'+this.location.path()+'"!');
           this.router.navigate(['/login'])
         }
       });
