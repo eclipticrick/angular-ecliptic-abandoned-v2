@@ -13,10 +13,6 @@
   padding: 8px 24px;
   margin-bottom: 8px;
 
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
   transition: all .3s;
   z-index: 1;
   .mat-icon{
@@ -54,9 +50,6 @@
     &.mt{ margin-top: 20px; }
     &.mb{ margin-bottom: 20px; }
     &.lh{ line-height: 3.6; }
-  }
-  hr.spacing{
-    border: 0;
   }
 
   // profile-settings

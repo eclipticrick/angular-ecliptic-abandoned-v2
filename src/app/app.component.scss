@@ -36,8 +36,23 @@ button,
 }
 
 /* handy classes */
+hr.spacing,
+/deep/ hr.spacing {
+  border: 0;
+}
+hr.no-margin,
+/deep/ hr.no-margin {
+  margin: 0;
+}
+.block,
+/deep/ .block {
+  display: block;
+  border-radius: 0;
+  width: 100%;
+}
 .cut-text,
 /deep/ .cut-text {
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }

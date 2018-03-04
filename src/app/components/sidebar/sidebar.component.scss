@@ -1,0 +1,33 @@
+.sidebar-container {
+  width: 240px;
+  h3 {
+    padding: 12px 24px 12px;
+    line-height: 1;
+    margin: 0;
+    font-weight: 100;
+    font-size: 16px;
+    color: #ccc;
+  }
+  .mat-toolbar {
+    .mat-toolbar-row{
+
+    }
+  }
+  .links-container {
+    .link {
+      text-align: left;
+      padding: 24px;
+      line-height: 1;
+      &.active {
+        background: #e8e8e8;
+      }
+    }
+  }
+  .buttons-container{
+    padding: 0 24px 18px;
+    button {
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+  }
+}

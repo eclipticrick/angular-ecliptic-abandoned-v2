@@ -13,9 +13,9 @@
           <span class="email cut-text">{{ user.email }}</span>
         </div>
       </mat-toolbar-row>
-
       <mat-toolbar-row class="mat-toolbar-info no-select">
         <mat-form-field>
+          <mat-label>Status</mat-label>
           <mat-select [(value)]="status">
             <mat-icon class="mat-icon-small status in-select online ">fiber_manual_record</mat-icon>
             <mat-option class="mat-option-status" value="online">
@@ -43,8 +43,20 @@
 
     </mat-toolbar>
 
+    <button *ngFor="let friend of friends" mat-button class="block friend" (click)="onFriendClick(friend)">
+      <span class="content">
+        <span class="image">
+          <img [src]="user.photoURL">
+          <mat-icon class="mat-icon-small status" [ngClass]="friend.status">fiber_manual_record</mat-icon>
+        </span>
+        <span class="info cut-text">
+          <span class="name cut-text">{{ friend.name }}</span>
+          <span class="lastMessage cut-text">{{ friend.lastMessage }}</span>
+        </span>
+      </span>
+    </button>
 
-    <mat-list class="mat-list-friends">
+    <!--<mat-list class="mat-list-friends">
       <h3 mat-subheader>Pinned</h3>
       <a mat-list-item *ngFor="let friend of pinned" (click)="onFriendClick(friend)">
         <div mat-list-icon class="image">
@@ -64,7 +76,7 @@
         <h4 mat-line>{{ friend.name }}</h4>
         <p mat-line> {{ friend.lastMessage }} </p>
       </a>
-    </mat-list>
+    </mat-list>-->
 
   </div>
 </div>

@@ -3,7 +3,21 @@
 body {
   margin: 0;
   background: #f9f9f9;
+
 }
+
+/* scrollbar stylings */
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+*::-webkit-scrollbar {
+  background-color: transparent;
+  width: 2px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #444;
+}
+
 // .transition2 { transition: all .25s }
 // .transition3 { transition: all .3s  }
 // .transition4 { transition: all .4s  }

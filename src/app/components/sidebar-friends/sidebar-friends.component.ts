@@ -12,11 +12,21 @@ export class SidebarFriendsComponent implements OnInit {
 
   //temp
   friends = [
-    { name: 'mike', status: 'online', lastMessage: 'Yo!' },
-    { name: 'joe', status: 'busy', lastMessage: 'Noob!' },
-    { name: 'simon', status: 'away', lastMessage: 'xD' },
-    { name: 'rico', status: 'offline', lastMessage: 'Y THO?!?' },
-    { name: 'larry', status: 'offline', lastMessage: 'be mad' }
+    { name: 'Mike', status: 'online', lastMessage: 'Yo!' },
+    { name: 'Joe', status: 'busy', lastMessage: 'Noob!' },
+    { name: 'Simon', status: 'away', lastMessage: 'xD' },
+    { name: 'Rico', status: 'offline', lastMessage: 'Y THO?!?' },
+    { name: 'Larry', status: 'offline', lastMessage: 'be mad' },
+    { name: 'Michael van den Ozturkalizomenjovic', status: 'offline', lastMessage: 'Look at mah walletz brah, they be going places' },
+    { name: 'Andy', status: 'offline', lastMessage: '' },
+    { name: 'Mory', status: 'offline', lastMessage: '' },
+    { name: 'John', status: 'offline', lastMessage: '' },
+    { name: 'Sylvia', status: 'offline', lastMessage: '' },
+    { name: 'Mick', status: 'offline', lastMessage: '' },
+    { name: 'Starman', status: 'offline', lastMessage: '' },
+    { name: 'Elon', status: 'offline', lastMessage: '' },
+    { name: 'Jess', status: 'offline', lastMessage: '' },
+    { name: 'Timothy', status: 'offline', lastMessage: '' }
   ];
   pinned = this.friends.slice(2,4);
 

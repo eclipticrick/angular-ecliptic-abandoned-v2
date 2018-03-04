@@ -1,3 +1,30 @@
-<p>
-  sidebar works!
-</p>
+<div class="sidebar-container">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <mat-icon>fingerprint</mat-icon> Ecliptic
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <h3 class="no-select">Links</h3>
+  <div class="links-container">
+    <div *ngIf="auth.user$ | async as user">
+      <button style="height: 0;border:0;margin:0;padding: 0;opacity: 0;position: fixed;overflow: hidden">
+        Temp
+      </button>
+      <button class="block link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" mat-button>
+        Home
+      </button>
+      <button class="block link" [routerLink]="['/profile', user.uid]" routerLinkActive="active" mat-button>
+        Profile
+      </button>
+      <button class="block link" routerLink="/settings" routerLinkActive="active" mat-button>
+        Settings
+      </button>
+    </div>
+  </div>
+  <hr class="no-margin">
+  <h3 class="no-select">Actions</h3>
+  <div class="buttons-container">
+    <button mat-raised-button class="block" color="primary">Test</button>
+    <button mat-raised-button class="block" color="primary">Test</button>
+  </div>
+</div>

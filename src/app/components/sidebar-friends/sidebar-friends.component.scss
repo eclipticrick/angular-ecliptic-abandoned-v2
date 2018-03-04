@@ -2,7 +2,9 @@
   width: 240px;
 
   .mat-toolbar.mat-toolbar-profile {
-    // min-height: initial;
+    position: sticky;
+    top: 0;
+    z-index: 2;
     .mat-toolbar-row {
       &.mat-toolbar-profile{
         div.image{
@@ -24,15 +26,12 @@
         div {
           span {
             display: block;
+            line-height: 1.5;
             &.displayName {
-              //height: 20px;
               font-size: 13px;
-              line-height: 1.5;
             }
             &.email {
-              //height: 18px;
               font-size: 11px;
-              line-height: 1.5;
             }
           }
         }
@@ -50,33 +49,6 @@
   }
 
 }
-
-
-
-.mat-list-friends {
-  .mat-list-item {
-    cursor: pointer;
-    &:hover {
-      background: #f5f5f5;
-    }
-    div.image{
-      height: auto;
-      img {
-        //background: #d5d5d5;
-      }
-      .mat-icon {
-        margin-top: -12px;
-        display: block;
-        margin-left: 20px;
-        box-shadow: 0 0 0 5px #fff inset;
-        z-index: 1;
-        position: relative;
-        border-radius: 50%;
-      }
-    }
-  }
-}
-
 
 
 /deep/ .mat-icon {
@@ -107,6 +79,48 @@
   }
 }
 
-/*
 
-*/
+
+
+
+button.friend {
+  padding: 12px;
+  span.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    span.image {
+      img {
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+      }
+      .mat-icon {
+        margin-top: -12px;
+        display: block;
+        margin-left: 24px;
+        box-shadow: 0 0 0 5px #fff inset;
+        z-index: 1;
+        position: absolute;
+        border-radius: 50%;
+      }
+    }
+    span.info {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      margin-left: 12px;
+      span {
+        line-height: 1.5;
+        &.name {
+          font-weight: bold;
+          font-size: 13px;
+        }
+        &.lastMessage {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+
+}

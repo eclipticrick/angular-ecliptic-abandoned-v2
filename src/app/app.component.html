@@ -16,10 +16,10 @@
 
   <mat-sidenav-content>
     <app-navbar></app-navbar>
+    <app-toast-messages></app-toast-messages>
     <main id="routeAnimation" [@routeAnimation]="getComponentDepth(myOutlet)">
       <router-outlet #myOutlet="outlet"></router-outlet>
     </main>
-    <app-toast-messages></app-toast-messages>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
